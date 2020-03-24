@@ -1,0 +1,33 @@
+.nav-list {
+    background-color: #BDBDBD;
+    height: 100%;
+}
+
+a {
+    color: #FAFAFA;
+    text-decoration: none;
+}
+
+a[mat-list-item] {
+    cursor: pointer;
+    // color: #bbb;
+ }
+
+span {
+    // display: inline-block;
+    margin-right: auto;
+    color: #FAFAFA;
+}
+
+mat-icon {
+    color: #FAFAFA;
+}
+
+mat-icon:hover {
+    color: #bbb;
+}
+
+a[mat-list-item].active {
+    background: #9E9E9E;
+}
+

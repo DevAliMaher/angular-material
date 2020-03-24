@@ -1,0 +1,75 @@
+<div class="container">
+  <form
+    fxLayout="column"
+    fxLayoutAlign="center center"
+    fxLayoutGap="0.5rem"
+    (ngSubmit)="onSubmit(form)"
+    #form="ngForm"
+  >
+
+      
+      <mat-form-field [ngClass]="{'valid': name.valid}" >
+      <mat-label>Name</mat-label>
+      <input
+        type="text"
+        matInput
+        placeholder="Enter Your Name"
+        required
+        ngModel
+        name="userName"
+        #name="ngModel"
+      />
+      <mat-error *ngIf="email.value === ''">This field can`t be empty</mat-error>
+    </mat-form-field>
+    <mat-form-field [ngClass]="{'valid': email.valid}">
+      <mat-label>Email</mat-label>
+      <input
+        type="email"
+        matInput
+        placeholder="Enter Your Email"
+        email
+        required
+        ngModel
+        name="email"
+        #email="ngModel"
+      />
+      <mat-error *ngIf="email.value === ''">This field can`t be empty</mat-error>
+      <mat-error *ngIf="email.invalid && email.value !== ''">Enter valid Email</mat-error>
+    </mat-form-field>
+    <mat-form-field [ngClass]="{'valid': pass.valid}">
+        <mat-label>Password</mat-label>
+        <input
+        [type]="checked? 'text' : 'password'"
+        matInput
+        placeholder="Enter Your Password"
+        required
+        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+        ngModel
+        name="password"
+        #pass="ngModel"
+        />
+        <mat-icon matSuffix [ngClass]="{'valid': pass.valid}" *ngIf="pass.valid">done</mat-icon>
+        <mat-hint align="start" [ngClass]="{'valid': pass.valid}" *ngIf="pass.invalid">at least (8 charachter, number, uppercase)</mat-hint>
+        <mat-hint align="end" [ngClass]="{'valid': pass.valid}" style="margin-right: 3px;" *ngIf="pass.invalid">{{pass.value?.length}} / 8</mat-hint>
+        <mat-hint align="end" [ngClass]="{'valid': pass.valid}" *ngIf="pass.valid"> ✔ </mat-hint>
+    </mat-form-field>
+    <mat-checkbox fxFlexAlign="start" color="primary" class="show-pass" (click)="onShowPass()" #showPass>Show Password</mat-checkbox>
+    <mat-form-field [ngClass]="{'valid': birthdate.valid}">
+      <mat-label>Birthdate</mat-label>
+      <input
+        matInput
+        [matDatepicker]="picker"
+        [max]="maxDate"
+        required
+        ngModel
+        name="birthdate"
+        #birthdate="ngModel"
+      />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker startView="year"></mat-datepicker>
+      <mat-error *ngIf="email.value === ''">This field can`t be empty</mat-error>
+    </mat-form-field>
+    <mat-checkbox fxFlexAlign="start" ngModel name="terms" required color="primary" class="mat-checkbox">Agree to terms and Conditions</mat-checkbox>
+    <button type="submit" [disabled]="!form.valid" mat-raised-button color="primary">Sign Up</button>
+  </form>
+</div>

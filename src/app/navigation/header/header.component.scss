@@ -1,0 +1,33 @@
+a {
+    color: #FAFAFA;
+    text-decoration: none;
+}
+ a:hover, a:active {
+    cursor: pointer;
+    color: #bbb;
+ }
+
+ mat-toolbar {
+    height: 3rem;
+}
+
+.container {
+    margin: auto;
+    max-width: 75rem;
+}
+
+
+ .menu-links {
+     font-weight: 400;
+     font-size: 1.1rem;
+ }
+
+
+mat-icon {
+    color: #FAFAFA;
+}
+
+mat-icon:hover {
+    color: #bbb;
+}
+
